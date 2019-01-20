@@ -1,3 +1,9 @@
-.block{
-    border: solid 1px black;
+.innerBlock
+{
+    border: dashed 1px darkgreen; 
+}
+
+.block
+{
+    border: solid 2px black;
 }

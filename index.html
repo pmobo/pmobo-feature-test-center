@@ -11,30 +11,82 @@
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <script src="scripts/Global.js"></script>
 </head>
 <body>
-    <h2 style="text-align: center;">Account Session</h2>
-    <div class='row'>        
-        <div class="col-md-6">
-            <div class="block">
-                <h2>Register</h2>
-                UserName: <input type="text" name="register_userName" id="register_userName">
-                Password: <input type="password" name="register_password" id="register_password">
-                <button id="btnRegister" name="btnRegister">Register</button>
+    <div class="block">
+        <h2 style="text-align: center;">Account Session</h2>
+        <div class='row'>        
+            <div class="col-md-6">
+                <div class="innerBlock">
+                    <h3>Register</h2>
+                    UserName: <input type="text" name="register_userName" id="register_userName">
+                    Password: <input type="password" name="register_password" id="register_password">
+                    <button id="btnRegister" name="btnRegister">Register</button>
+                </div>
             </div>
-        </div>
-        <div class="col-md-6">
-            <div class="block">
-                <h2>Get Access Token</h2>
-                UserName: <input type="text" name="token_userName" id="token_userName">
-                Password: <input type="password" name="token_password" id="token_password">
-                <button id="btnRequestToken" name="btnRequestToken">Request Token</button>
-            </div>           
+            <div class="col-md-6">
+                <div class="innerBlock">
+                    <h3>Get Access Token</h2>
+                    UserName: <input type="text" name="token_userName" id="token_userName">
+                    Password: <input type="password" name="token_password" id="token_password">
+                    <button id="btnRequestToken" name="btnRequestToken">Request Token</button>
+                </div>           
+            </div>
         </div>
     </div>
 
-    
+    <br>
 
+    <div class="block">
+            <h2 style="text-align: center;">User Session</h2>
+            <div class="row">
+                <div class="col-md-6">
+                <div class="innerBlock">
+                    <h3>Get logged in user info</h2>
+                    <button id="" name="">Request Info</button>
+                </div>           
+                </div>
+            </div>
+        </div>
+
+    <br>
+
+    <div class="block">
+        <h2 style="text-align: center;">Activities Session</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="innerBlock">
+                    <h3>Get All user Activities</h2>
+                    <button id="" name="">Request Activities</button>
+                </div>           
+            </div>
+
+            <div class="col-md-6">
+                <div class="innerBlock">
+                    <h3>Link Activity</h2>
+                        Link this <select><option>Avitivty 1</option></select>
+                        To this <select><option>Avitivty 2</option></select>
+                    <button id="" name="">Link</button>
+                </div>           
+            </div>
+
+            <div class="col-md-6">
+                <div class="innerBlock">
+                    <h3>Dispose Link Activity</h2>
+                        Select Activity <select><option>Avitivty 1</option></select>                        
+                    <button id="" name="">Dispose</button>
+                </div>           
+            </div>
+
+        </div>
+    </div>
+    
+    <!--<div class="block">
+            <h2 style="text-align: center;">Trello Session</h2>
+            <div class="row">
+            </div>
+        </div>-->
     
 
 </body>
