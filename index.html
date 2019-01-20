@@ -5,9 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pmobo Test Center</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
 <body>
+    <h2 style="text-align: center;">Account Session</h2>
+    <div class='row'>        
+        <div class="col-md-6">
+            <div class="block">
+                <h2>Register</h2>
+                UserName: <input type="text" name="register_userName" id="register_userName">
+                Password: <input type="password" name="register_password" id="register_password">
+                <button id="btnRegister" name="btnRegister">Register</button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="block">
+                <h2>Get Access Token</h2>
+                UserName: <input type="text" name="token_userName" id="token_userName">
+                Password: <input type="password" name="token_password" id="token_password">
+                <button id="btnRequestToken" name="btnRequestToken">Request Token</button>
+            </div>           
+        </div>
+    </div>
+
     
+
+    
+
 </body>
-<script src="scripts/Auth.js"></script>
+<script src="scripts/Account.js"></script>
 </html>
