@@ -62,7 +62,7 @@
                 </div>           
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="innerBlock">
                     <h3>Link Activity</h2>
                         Link this <select><option>Avitivty 1</option></select>
@@ -71,7 +71,7 @@
                 </div>           
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="innerBlock">
                     <h3>Dispose Link Activity</h2>
                         Select Activity <select><option>Avitivty 1</option></select>                        
@@ -91,4 +91,10 @@
 
 </body>
 <script src="scripts/Account.js"></script>
+<script>
+    //Making token request:
+    Pmobo.Account.GetToken(Pmobo.loginData, Pmobo.endpoints.baseUrl + Pmobo.endpoints.Account.TokenRequest);
+    // look for angular example: http://bitoftech.net/2014/06/09/angularjs-token-authentication-using-asp-net-web-api-2-owin-asp-net-identity/
+    // sample to use: https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
+</script>
 </html>
