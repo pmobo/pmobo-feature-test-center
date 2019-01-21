@@ -8,6 +8,13 @@ Pmobo.endpoints.Account.TokenRequest = "/token";
 
 
 
+
+Pmobo.Account.Register = function (userInfo)
+{
+    
+}
+
+
 Pmobo.Account.Authenticate = function(credentials)
 {
     var body = {
@@ -41,12 +48,13 @@ Pmobo.Account.Authenticate = function(credentials)
             document.getElementById('resultTokenType').innerText = result.token_type;
             //remove classe que oculta resultado
             $("#resultTokenRequestBlock").show();
-
+            document.getElementById('resultTokenStatus').innerText = "SUCCESS";
         },
 
         error: function(result) {
             //called when there is an error
             console.log("ERROR", result);
+            document.getElementById('resultTokenStatus').innerText = "FAIL";
         },
     });
 };
@@ -66,10 +74,17 @@ Pmobo.Account.GetUserInfo = function(token)
         headers: headers,
         success: function(result) {
             console.log("SUCCESS", result);
+
+
+            $('#resultUserInfoBlock').show();
+            document.getElementById('resultUserInfoName').innerText = result;
+            document.getElementById('resultUserInfoStatus').innerText = "SUCCESS";
+
         },
         error: function(result) {
         //called when there is an error
         console.log("ERROR", result);
+        document.getElementById('resultUserInfoStatus').innerText = "FAIL";
         }
     });
 }
