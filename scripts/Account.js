@@ -11,16 +11,18 @@ Pmobo.endpoints.Account.TokenRequest = "/token";
 
 Pmobo.Account.Register = function (userInfo)
 {
+
     var body = {
-        grant_type: 'password',                
-        username: userInfo.name,
-        password: userInfo.password,
-        email: userInfo.email
+        "userName": userInfo.userName,
+        "password": userInfo.password,
+        "confirmPassword": userInfo.password,
+        "email": userInfo.email
     };
     $.ajax({        
         url: Pmobo.endpoints.baseUrl + Pmobo.endpoints.Account.Register,
         type: 'POST',
         dataType: 'json',
+        contentType: 'json',
         data: body, /* right */
         success: function(result) {
             console.log("REGISTRADO! ", result);
