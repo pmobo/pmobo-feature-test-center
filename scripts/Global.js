@@ -9,12 +9,7 @@ Pmobo.Account.Token = {};
 
 Pmobo.Init = function () 
 {
-    Pmobo.endpoints.baseUrl = "https://pmobo2.azurewebsites.net";
-    Pmobo.loginData = {
-        grant_type: 'password',
-        username: "gsoster",
-        password: "123456"
-    };
+    Pmobo.endpoints.baseUrl = "https://pmobo2.azurewebsites.net";    
     console.log("Pmobo.Init() executado");
 }
 

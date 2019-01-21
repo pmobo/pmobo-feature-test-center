@@ -31,7 +31,7 @@ Pmobo.Account.Authenticate = function(credentials)
         data: body, /* right */
         complete: function(result) {
             //called when complete
-            alert(result);
+            //alert(result);
         },
 
         success: function(result) {
