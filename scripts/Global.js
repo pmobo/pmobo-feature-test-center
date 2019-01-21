@@ -5,7 +5,7 @@ var Pmobo = {};
 Pmobo.endpoints = {};
 Pmobo.User = {};
 Pmobo.Account = {};
-
+Pmobo.Account.Token = {};
 
 Pmobo.Init = function () 
 {

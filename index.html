@@ -30,7 +30,7 @@
                     <h3>Get Access Token</h2>
                     UserName: <input type="text" name="token_userName" id="token_userName">
                     Password: <input type="password" name="token_password" id="token_password">
-                    <button id="btnRequestToken" name="btnRequestToken">Request Token</button>
+                    <button onclick="requestToken_click()" id="btnRequestToken" name="btnRequestToken">Request Token</button>
                 </div>           
             </div>
         </div>
@@ -92,8 +92,19 @@
 </body>
 <script src="scripts/Account.js"></script>
 <script>
-    //Making token request:
-    Pmobo.Account.GetToken(Pmobo.loginData, Pmobo.endpoints.baseUrl + Pmobo.endpoints.Account.TokenRequest);
+    /*  CALL HANDLER */
+
+    /**
+    * REQUEST TOKEN
+    */
+    function requestToken_click(){
+        alert("Request Token");
+    }
+
+    var credentials = {name: "gsoster", password: "123456"};
+    Pmobo.Account.Authenticate(credentials);//credentials = {name: x, password: y}
+
+    //Making token request:    
     // look for angular example: http://bitoftech.net/2014/06/09/angularjs-token-authentication-using-asp-net-web-api-2-owin-asp-net-identity/
     // sample to use: https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
 </script>
