@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="styles/style.css">
     <script src="scripts/Global.js"></script>
 </head>
-<body>
+<body>        
     <div class="block">
         <h2 style="text-align: center;">Account Session</h2>
         <div class='row'>        
@@ -21,9 +21,14 @@
                 <div class="innerBlock">
                     <h3>Register</h2>
                     UserName: <input type="text" name="register_userName" id="register_userName">
+                    Email: <input type="text" name="register_email" id="register_email">
                     Password: <input type="password" name="register_password" id="register_password">
-                                                                                
-                    <button id="btnRegister" name="btnRegister">Register</button>
+
+                    <div id="resultRegisterRequestBlock" class="resultHidden result">
+                        <b>STATUS: </b><span id="resultRegisterStatus"></span><br>
+                    </div>
+
+                    <button onclick="userRegister_click()" id="btnRegister" name="btnRegister">Register</button>
                 </div>
             </div>
             <div class="col-md-6">
@@ -132,13 +137,23 @@
 
 
     function requestUserInfo_click()
-    {        
-        console.log("## User Info Requested ##")
+    {
+        console.log("## User Info Requested ##");
         Pmobo.Account.GetUserInfo(Pmobo.Account.Token.AccessToken);
     }
 
 
 
+    function userRegister_click()
+    {
+        console.log("## User register Requested##");
+        var userInfo = {
+            username: document.getElementById('register_userName').value,
+            password: document.getElementById('register_password').value,
+            email: document.getElementById('register_email').value
+        }
+        Pmobo.Account.Register(userInfo);
+    }
 
     
 </script>

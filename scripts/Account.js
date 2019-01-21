@@ -11,8 +11,28 @@ Pmobo.endpoints.Account.TokenRequest = "/token";
 
 Pmobo.Account.Register = function (userInfo)
 {
-    
-}
+    var body = {
+        grant_type: 'password',                
+        username: userInfo.name,
+        password: userInfo.password,
+        email: userInfo.email
+    };
+    $.ajax({        
+        url: Pmobo.endpoints.baseUrl + Pmobo.endpoints.Account.Register,
+        type: 'POST',
+        dataType: 'json',
+        data: body, /* right */
+        success: function(result) {
+            console.log("REGISTRADO! ", result);
+            $('#resultRegisterRequestBlock').show();
+            document.getElementById('resultRegisterStatus').innerText = "SUCCESS";
+        },
+        error: function(result) {            
+            console.log("ERROR", result);
+            document.getElementById('resultRegisterStatus').innerText = "FAIL";
+        }
+    });
+};
 
 
 Pmobo.Account.Authenticate = function(credentials)
@@ -30,12 +50,10 @@ Pmobo.Account.Authenticate = function(credentials)
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',        
         data: body, /* right */
         complete: function(result) {
-            //called when complete
-            //alert(result);
+            //called when complete            
         },
 
-        success: function(result) {
-            //called when successful
+        success: function(result) {            
             console.log("OK!", result);
             sessionStorage.setItem('accessToken', result.access_token);
             Pmobo.Account.Token.AccessToken = result.access_token;
@@ -45,14 +63,12 @@ Pmobo.Account.Authenticate = function(credentials)
             //setup visual
             document.getElementById('resultTokenAccess').innerText = result.access_token;
             document.getElementById('resultTokenExpires').innerText = result.expires_in;
-            document.getElementById('resultTokenType').innerText = result.token_type;
-            //remove classe que oculta resultado
-            $("#resultTokenRequestBlock").show();
+            document.getElementById('resultTokenType').innerText = result.token_type;            
+            $("#resultTokenRequestBlock").show();//remove classe que oculta resultado
             document.getElementById('resultTokenStatus').innerText = "SUCCESS";
         },
 
-        error: function(result) {
-            //called when there is an error
+        error: function(result) {            
             console.log("ERROR", result);
             document.getElementById('resultTokenStatus').innerText = "FAIL";
         },
@@ -74,15 +90,12 @@ Pmobo.Account.GetUserInfo = function(token)
         headers: headers,
         success: function(result) {
             console.log("SUCCESS", result);
-
-
             $('#resultUserInfoBlock').show();
             document.getElementById('resultUserInfoName').innerText = result;
             document.getElementById('resultUserInfoStatus').innerText = "SUCCESS";
 
         },
-        error: function(result) {
-        //called when there is an error
+        error: function(result) {        
         console.log("ERROR", result);
         document.getElementById('resultUserInfoStatus').innerText = "FAIL";
         }

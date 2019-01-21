@@ -14,10 +14,10 @@
 }
 
 .result
-{
+{    
     color: red;
     font-weight: bold;
-    font-size: large;
+    font-size: large;    
 }
 
 .tokenResult
