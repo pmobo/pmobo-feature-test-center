@@ -33,8 +33,8 @@
                     Password: <input type="password" name="token_password" id="token_password">
 
                     <div id="resultTokenRequestBlock" class="resultHidden result">
-                        <b>AccessToken: </b><span id="resultTokenAccess" class="tokenResult"></span>
-                        <b>Expires: </b><span id="resultTokenExpires" class="tokenResult"></span>
+                        <b>AccessToken: </b><span id="resultTokenAccess" class="tokenResult"></span><br>
+                        <b>Expires: </b><span id="resultTokenExpires" class="tokenResult"></span><br>
                         <b>TokenType: </b><span id="resultTokenType" class="tokenResult"></span>                        
                     </div>
 
@@ -52,7 +52,13 @@
                 <div class="col-md-6">
                 <div class="innerBlock">
                     <h3>Get logged in user info</h2>
-                    <button id="" name="">Request Info</button>
+
+                    <div id="resultUserInfoBlock" class="resultHidden result">
+                        <b>UserName: </b><span id="resultUserInfoName" class="tokenResult"></span><br>
+                        <b>E-mail: </b><span id="resultUserInfoEmail" class="tokenResult"></span><br>                        
+                    </div>
+
+                    <button onclick="requestUserInfo_click()" id="btnRequestUserInfo" name="">Request Info</button>
                 </div>           
                 </div>
             </div>
@@ -106,7 +112,10 @@
     * REQUEST TOKEN
     */
     function requestToken_click(){
-        alert("Request Token");
+        //Making token request:    
+        // look for angular example: http://bitoftech.net/2014/06/09/angularjs-token-authentication-using-asp-net-web-api-2-owin-asp-net-identity/
+        // sample to use: https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
+        console.log("## Token Requested ##");
         var username = document.getElementById('token_userName').value;
         var password = document.getElementById('token_password').value;
         if (username == null || password == null)
@@ -114,14 +123,21 @@
             alert("Usuário e Password não podem ser nulos");
             return;
         }
-        var credentials = {name: username, password: password};
-        console.log("Credentials? ");
-        console.log(credentials);
-        Pmobo.Account.Authenticate({name: username, password: password});//credentials = {name: x, password: y}
+        var credentials = {name: username, password: password};        
+        Pmobo.Account.Authenticate(credentials);//credentials = {name: x, password: y}
     }
 
-    //Making token request:    
-    // look for angular example: http://bitoftech.net/2014/06/09/angularjs-token-authentication-using-asp-net-web-api-2-owin-asp-net-identity/
-    // sample to use: https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
+
+
+    function requestUserInfo_click()
+    {        
+        console.log("## User Info Requested ##")
+        Pmobo.Account.GetUserInfo(Pmobo.Account.Token.AccessToken);
+    }
+
+
+
+
+    
 </script>
 </html>

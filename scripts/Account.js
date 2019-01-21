@@ -16,8 +16,7 @@ Pmobo.Account.Authenticate = function(credentials)
         password: credentials.password
     };
 
-    $.ajax({
-        //url: 'https://pmobo2.azurewebsites.net/token',
+    $.ajax({        
         url: Pmobo.endpoints.baseUrl + Pmobo.endpoints.Account.TokenRequest,
         type: 'POST',
         dataType: 'json',
@@ -50,5 +49,28 @@ Pmobo.Account.Authenticate = function(credentials)
             console.log("ERROR", result);
         },
     });
+};
 
+
+Pmobo.Account.GetUserInfo = function(token)
+{
+    //var token = sessionStorage.getItem(tokenKey);
+    var headers = {};
+    if (token) {
+        headers.Authorization = 'Bearer ' + token;
+    }
+
+    $.ajax({
+        type: 'GET',
+        url: Pmobo.endpoints.baseUrl + '/api/users/',
+        headers: headers,
+        success: function(result) {
+            console.log("SUCCESS", result);
+        },
+        error: function(result) {
+        //called when there is an error
+        console.log("ERROR", result);
+        }
+    });
 }
+    
