@@ -37,9 +37,9 @@ Pmobo.Account.Authenticate = function(credentials)
             Pmobo.Account.Token.TokenType = result.token_type;
             
             //setup visual
-            document.getElementById('resultTokenAccess').value = result.access_token;
-            document.getElementById('resultTokenExpires').value = result.expires_in;
-            document.getElementById('resultTokenType').value = result.token_type;
+            document.getElementById('resultTokenAccess').innerText = result.access_token;
+            document.getElementById('resultTokenExpires').innerText = result.expires_in;
+            document.getElementById('resultTokenType').innerText = result.token_type;
             //remove classe que oculta resultado
             $("#resultTokenRequestBlock").show();
 

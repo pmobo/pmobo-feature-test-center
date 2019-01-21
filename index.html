@@ -22,14 +22,7 @@
                     <h3>Register</h2>
                     UserName: <input type="text" name="register_userName" id="register_userName">
                     Password: <input type="password" name="register_password" id="register_password">
-                    
-                    <div id="resultTokenRequestBlock" class="resultHidden result">
-                        <b>AccessToken: </b><span id="resultTokenAccess" class="tokenResult"></span>
-                        <b>Expires: </b><span id="resultTokenExpires" class="tokenResult"></span>
-                        <b>TokenType: </b><span id="resultTokenType" class="tokenResult"></span>                        
-                    </div>
-                    
-                    
+                                                                                
                     <button id="btnRegister" name="btnRegister">Register</button>
                 </div>
             </div>
@@ -38,6 +31,13 @@
                     <h3>Get Access Token</h2>
                     UserName: <input type="text" name="token_userName" id="token_userName">
                     Password: <input type="password" name="token_password" id="token_password">
+
+                    <div id="resultTokenRequestBlock" class="resultHidden result">
+                        <b>AccessToken: </b><span id="resultTokenAccess" class="tokenResult"></span>
+                        <b>Expires: </b><span id="resultTokenExpires" class="tokenResult"></span>
+                        <b>TokenType: </b><span id="resultTokenType" class="tokenResult"></span>                        
+                    </div>
+
                     <button onclick="requestToken_click()" id="btnRequestToken" name="btnRequestToken">Request Token</button>
                 </div>           
             </div>
@@ -115,7 +115,9 @@
             return;
         }
         var credentials = {name: username, password: password};
-        Pmobo.Account.Authenticate(credentials);//credentials = {name: x, password: y}
+        console.log("Credentials? ");
+        console.log(credentials);
+        Pmobo.Account.Authenticate({name: username, password: password});//credentials = {name: x, password: y}
     }
 
     //Making token request:    
