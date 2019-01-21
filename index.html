@@ -22,6 +22,14 @@
                     <h3>Register</h2>
                     UserName: <input type="text" name="register_userName" id="register_userName">
                     Password: <input type="password" name="register_password" id="register_password">
+                    
+                    <div id="resultTokenRequestBlock" class="resultHidden result">
+                        <b>AccessToken: </b><span id="resultTokenAccess" class="tokenResult"></span>
+                        <b>Expires: </b><span id="resultTokenExpires" class="tokenResult"></span>
+                        <b>TokenType: </b><span id="resultTokenType" class="tokenResult"></span>                        
+                    </div>
+                    
+                    
                     <button id="btnRegister" name="btnRegister">Register</button>
                 </div>
             </div>
@@ -99,10 +107,16 @@
     */
     function requestToken_click(){
         alert("Request Token");
+        var username = document.getElementById('register_userName').value;
+        var password = document.getElementById('register_password').value;
+        if (username == null || password == null)
+        {
+            alert("Usuário e Password não podem ser nulos");
+            return;
+        }
+        var credentials = {name: username, password: password};
+        Pmobo.Account.Authenticate(credentials);//credentials = {name: x, password: y}
     }
-
-    var credentials = {name: "gsoster", password: "123456"};
-    Pmobo.Account.Authenticate(credentials);//credentials = {name: x, password: y}
 
     //Making token request:    
     // look for angular example: http://bitoftech.net/2014/06/09/angularjs-token-authentication-using-asp-net-web-api-2-owin-asp-net-identity/

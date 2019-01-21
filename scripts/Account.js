@@ -21,8 +21,7 @@ Pmobo.Account.Authenticate = function(credentials)
         url: Pmobo.endpoints.baseUrl + Pmobo.endpoints.Account.TokenRequest,
         type: 'POST',
         dataType: 'json',
-        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        /* data: JSON.stringify(body), /* wrong */
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',        
         data: body, /* right */
         complete: function(result) {
             //called when complete
@@ -32,10 +31,18 @@ Pmobo.Account.Authenticate = function(credentials)
         success: function(result) {
             //called when successful
             console.log("OK!", result);
-            sessionStorage.setItem('accessToken', response.access_token);
+            sessionStorage.setItem('accessToken', result.access_token);
             Pmobo.Account.Token.AccessToken = result.access_token;
             Pmobo.Account.Token.Expires = result.expires_in;
             Pmobo.Account.Token.TokenType = result.token_type;
+            
+            //setup visual
+            document.getElementById('resultTokenAccess').value = result.access_token;
+            document.getElementById('resultTokenExpires').value = result.expires_in;
+            document.getElementById('resultTokenType').value = result.token_type;
+            //remove classe que oculta resultado
+            $("#resultTokenRequestBlock").show();
+
         },
 
         error: function(result) {
