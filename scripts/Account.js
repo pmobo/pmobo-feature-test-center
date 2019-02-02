@@ -21,8 +21,8 @@ Pmobo.Account.Register = function (userInfo)
     $.ajax({        
         url: Pmobo.endpoints.baseUrl + Pmobo.endpoints.Account.Register,
         type: 'POST',
-        dataType: 'json',
-        contentType: 'json',
+        //dataType: 'json',
+        contentType: 'application/json',
         data: body, /* right */
         success: function(result) {
             console.log("REGISTRADO! ", result);
