@@ -14,6 +14,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="styles/style.css">
     <script src="scripts/Global.js"></script>
+    <script src="scripts/TrelloConnector.js"></script>
 </head>
 <body>    
     <h1>PMOBO FEATURE TEST CENTER</h1>  
@@ -23,6 +24,8 @@
             <div class=col-md-12>
                 <button onclick="trelloConnector_click()">Connect to Trello</button>
                 <button onclick="trelloUserToken_click()">Check User Token</button>
+                <button onclick="trelloGetAllBoards_click()">Get All Boards</button>
+                <div class="boardsResult"></div>
             </div>
         </div>
     </div>  
@@ -188,6 +191,12 @@
     {
         console.log(Trello.token());
         alert(Trello.token());
+        TrelloConnector.UserToken = Trello.token();
+    }
+
+    function trelloGetAllBoards_click()
+    {
+        TrelloConnector.GetAllBoards();
     }
 
     var authenticationSuccess = function() {
