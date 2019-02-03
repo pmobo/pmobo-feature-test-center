@@ -25,6 +25,7 @@
                 <button onclick="trelloConnector_click()">Connect to Trello</button>
                 <button onclick="trelloUserToken_click()">Check User Token</button>
                 <button onclick="trelloGetAllBoards_click()">Get All Boards</button>
+                <button onclick="trelloGetAllBoardsUsingAPI_click()">Get All Boards Using API</button>
                 <div id="boardsResult"></div>
             </div>
         </div>
@@ -197,6 +198,22 @@
     function trelloGetAllBoards_click()
     {
         TrelloConnector.GetAllBoards();
+    }
+
+
+    function trelloGetAllBoardsUsingAPI_click()
+    {
+        var url = "https://pmovov3.azurewebsites.net/api/Trello?token=" + Trello.token();
+        console.log("trelloGetAllBoardsUsingAPI_click URL: ", url);
+        $.get(url, function( data ) {
+            $("#boardsResult").append("<P> Total number of boards loaded FROM API: " + data.length);
+            for(var i = 0; i < data.length; i++)
+            {
+                var boardName = data[i].name;
+                $("#boardsResult").append("<P>Board API Name: " + boardName);
+            }
+            alert( "Get Boards was performed." );
+        });
     }
 
     var authenticationSuccess = function() {
