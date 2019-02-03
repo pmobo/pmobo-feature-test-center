@@ -16,7 +16,12 @@ TrelloConnector.GetAllBoards = function()
 
 
     $.get(url, function( data ) {
-        $( ".boardsResult" ).html( data );
+        $("#boardsResult").append("<P> Total number of boards loaded: " + data.length);
+        for(var i = 0; i < data.length; i++)
+        {
+            var boardName = data[i].name;
+            $("#boardsResult").append("<P>Board Name: " + boardName);
+        }
         alert( "Get Boards was performed." );
     });
 
