@@ -206,6 +206,7 @@
         var url = "https://pmovov3.azurewebsites.net/api/Trello?token=" + Trello.token();
         console.log("trelloGetAllBoardsUsingAPI_click URL: ", url);
         $.get(url, function( data ) {
+            console.log("RETORNO DA API DO PMOBO", data);
             $("#boardsResult").append("<P> Total number of boards loaded FROM API: " + data.length);
             for(var i = 0; i < data.length; i++)
             {
