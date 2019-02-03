@@ -203,14 +203,16 @@
 
     function trelloGetAllBoardsUsingAPI_click()
     {
+        var dataAPI;
         var url = "https://pmovov3.azurewebsites.net/api/Trello?token=" + Trello.token();
         console.log("trelloGetAllBoardsUsingAPI_click URL: ", url);
         $.get(url, function( data ) {
             console.log("RETORNO DA API DO PMOBO", data);
+            dataAPI = JSON.parse(data);
             $("#boardsResult").append("<P> Total number of boards loaded FROM API: " + data.length);
-            for(var i = 0; i < data.length; i++)
+            for(var i = 0; i < dataAPI.length; i++)
             {
-                var boardName = data[i].name;
+                var boardName = dataAPI[i].name;
                 $("#boardsResult").append("<P>Board API Name: " + boardName);
             }
             alert( "Get Boards was performed." );
