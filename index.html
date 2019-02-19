@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pmobo Test Center</title>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-<script src="https://api.trello.com/1/client.js?key=e7812951d8bd4b40db1bebe14574e86c"></script>
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://api.trello.com/1/client.js?key=e7812951d8bd4b40db1bebe14574e86c"></script>
 
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="styles/style.css">
     <script src="scripts/Global.js"></script>
     <script src="scripts/TrelloConnector.js"></script>
 </head>
-<body>    
-    <h1>PMOBO FEATURE TEST CENTER</h1>  
+
+<body>
+    <h1>PMOBO FEATURE TEST CENTER</h1>
     <div class="block">
         <h2>Trello Connector</h2>
         <div class="row">
@@ -29,39 +31,55 @@
                 <div id="boardsResult"></div>
             </div>
         </div>
-    </div>  
+    </div>
+    <div class="block">
+        <h2>Project Online Connector</h2>
+        <div class="row">
+            <div class=col-md-12>
+                UserName: <input type="text" name="projectOnline_userName" id="projectOnline_userName">
+                Password: <input type="password" name="projectOnline_password" id="projectOnline_password">
+                PWA Path: <input type="text" name="projectOnline_pwaPath" id="projectOnline_pwaPath">
+                <button onclick="projectConnector_click()">Connect to Project Online</button>
+                <button onclick="projectGetEPTs_click()">Get EPTs</button>
+                <button onclick="">Get All Projects</button>
+                <button onclick="">Get All TASKS</button>
+                <div id="EPTsResult"></div>
+            </div>
+        </div>
+    </div>
     <div class="block">
         <h2 style="text-align: center;">Account Session</h2>
-        <div class='row'>        
+        <div class='row'>
             <div class="col-md-6">
                 <div class="innerBlock">
                     <h3>Register</h2>
-                    UserName: <input type="text" name="register_userName" id="register_userName">
-                    Email: <input type="text" name="register_email" id="register_email">
-                    Password: <input type="password" name="register_password" id="register_password">
+                        UserName: <input type="text" name="register_userName" id="register_userName">
+                        Email: <input type="text" name="register_email" id="register_email">
+                        Password: <input type="password" name="register_password" id="register_password">
 
-                    <div id="resultRegisterRequestBlock" class="resultHidden result">
-                        <b>STATUS: </b><span id="resultRegisterStatus"></span><br>
-                    </div>
+                        <div id="resultRegisterRequestBlock" class="resultHidden result">
+                            <b>STATUS: </b><span id="resultRegisterStatus"></span><br>
+                        </div>
 
-                    <button onclick="userRegister_click()" id="btnRegister" name="btnRegister">Register</button>
+                        <button onclick="userRegister_click()" id="btnRegister" name="btnRegister">Register</button>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="innerBlock">
                     <h3>Get Access Token</h2>
-                    UserName: <input type="text" name="token_userName" id="token_userName">
-                    Password: <input type="password" name="token_password" id="token_password">
+                        UserName: <input type="text" name="token_userName" id="token_userName">
+                        Password: <input type="password" name="token_password" id="token_password">
 
-                    <div id="resultTokenRequestBlock" class="resultHidden result">
-                        <b>STATUS: </b><span id="resultTokenStatus"></span><br>
-                        <b>AccessToken: </b><span id="resultTokenAccess" class="tokenResult"></span><br>
-                        <b>Expires: </b><span id="resultTokenExpires" class="tokenResult"></span><br>
-                        <b>TokenType: </b><span id="resultTokenType" class="tokenResult"></span>                        
-                    </div>
+                        <div id="resultTokenRequestBlock" class="resultHidden result">
+                            <b>STATUS: </b><span id="resultTokenStatus"></span><br>
+                            <b>AccessToken: </b><span id="resultTokenAccess" class="tokenResult"></span><br>
+                            <b>Expires: </b><span id="resultTokenExpires" class="tokenResult"></span><br>
+                            <b>TokenType: </b><span id="resultTokenType" class="tokenResult"></span>
+                        </div>
 
-                    <button onclick="requestToken_click()" id="btnRequestToken" name="btnRequestToken">Request Token</button>
-                </div>           
+                        <button onclick="requestToken_click()" id="btnRequestToken" name="btnRequestToken">Request
+                            Token</button>
+                </div>
             </div>
         </div>
     </div>
@@ -69,23 +87,23 @@
     <br>
 
     <div class="block">
-            <h2 style="text-align: center;">User Session</h2>
-            <div class="row">
-                <div class="col-md-6">
+        <h2 style="text-align: center;">User Session</h2>
+        <div class="row">
+            <div class="col-md-6">
                 <div class="innerBlock">
                     <h3>Get logged in user info</h2>
 
-                    <div id="resultUserInfoBlock" class="resultHidden result">
-                        <b>STATUS: </b><span id="resultUserInfoStatus"></span><br>
-                        <b>UserName: </b><span id="resultUserInfoName" class="tokenResult"></span><br>
-                        <b>E-mail: </b><span id="resultUserInfoEmail" class="tokenResult"></span><br>                        
-                    </div>
+                        <div id="resultUserInfoBlock" class="resultHidden result">
+                            <b>STATUS: </b><span id="resultUserInfoStatus"></span><br>
+                            <b>UserName: </b><span id="resultUserInfoName" class="tokenResult"></span><br>
+                            <b>E-mail: </b><span id="resultUserInfoEmail" class="tokenResult"></span><br>
+                        </div>
 
-                    <button onclick="requestUserInfo_click()" id="btnRequestUserInfo" name="">Request Info</button>
-                </div>           
+                        <button onclick="requestUserInfo_click()" id="btnRequestUserInfo" name="">Request Info</button>
                 </div>
             </div>
         </div>
+    </div>
 
     <br>
 
@@ -95,36 +113,42 @@
             <div class="col-md-4">
                 <div class="innerBlock">
                     <h3>Get All user Activities</h2>
-                    <button id="" name="">Request Activities</button>
-                </div>           
+                        <button id="" name="">Request Activities</button>
+                </div>
             </div>
 
             <div class="col-md-4">
                 <div class="innerBlock">
                     <h3>Link Activity</h2>
-                        Link this <select><option>Avitivty 1</option></select>
-                        To this <select><option>Avitivty 2</option></select>
-                    <button id="" name="">Link</button>
-                </div>           
+                        Link this <select>
+                            <option>Avitivty 1</option>
+                        </select>
+                        To this <select>
+                            <option>Avitivty 2</option>
+                        </select>
+                        <button id="" name="">Link</button>
+                </div>
             </div>
 
             <div class="col-md-4">
                 <div class="innerBlock">
                     <h3>Dispose Link Activity</h2>
-                        Select Activity <select><option>Avitivty 1</option></select>                        
-                    <button id="" name="">Dispose</button>
-                </div>           
+                        Select Activity <select>
+                            <option>Avitivty 1</option>
+                        </select>
+                        <button id="" name="">Dispose</button>
+                </div>
             </div>
 
         </div>
     </div>
-    
+
     <!--<div class="block">
             <h2 style="text-align: center;">Trello Session</h2>
             <div class="row">
             </div>
         </div>-->
-    
+
 
 </body>
 <script src="scripts/Account.js"></script>
@@ -134,34 +158,31 @@
     /**
     * REQUEST TOKEN
     */
-    function requestToken_click(){
+    function requestToken_click() {
         //Making token request:    
         // look for angular example: http://bitoftech.net/2014/06/09/angularjs-token-authentication-using-asp-net-web-api-2-owin-asp-net-identity/
         // sample to use: https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
         console.log("## Token Requested ##");
         var username = document.getElementById('token_userName').value;
         var password = document.getElementById('token_password').value;
-        if (username == null || password == null)
-        {
+        if (username == null || password == null) {
             alert("Usuário e Password não podem ser nulos");
             return;
         }
-        var credentials = {name: username, password: password};        
+        var credentials = { name: username, password: password };
         Pmobo.Account.Authenticate(credentials);//credentials = {name: x, password: y}
     }
 
 
 
-    function requestUserInfo_click()
-    {
+    function requestUserInfo_click() {
         console.log("## User Info Requested ##");
         Pmobo.Account.GetUserInfo(Pmobo.Account.Token.AccessToken);
     }
 
 
 
-    function userRegister_click()
-    {
+    function userRegister_click() {
         console.log("## User register Requested##");
         var userInfo = {
             username: document.getElementById('register_userName').value,
@@ -170,62 +191,92 @@
         }
         Pmobo.Account.Register(userInfo);
     }
+    /**
+     *  ///////////////////// PROJECT ONLINE ///////////////
+     * */
 
-    
-    function trelloConnector_click()
-    {
+    function projectConnector_click() {
+        Pmobo.Account.ProjectOnline.userName = document.getElementById('projectOnline_userName').value;
+        Pmobo.Account.ProjectOnline.password = document.getElementById('projectOnline_password').value;
+        Pmobo.Account.ProjectOnline.pwaPath = document.getElementById('projectOnline_pwaPath').value;
+    }
+    /**
+     * Makes Ajax call to the endpoint and gets the EPTs from the current user
+     **/
+    function projectGetEPTs_click() {
+        var dataAPI;
+        var urlParams = "userName=" + Pmobo.Account.ProjectOnline.userName + "&";
+        urlParams = urlParams + "password=" + Pmobo.Account.ProjectOnline.password + "&";
+        urlParams = urlParams + "pwaPath=" + Pmobo.Account.ProjectOnline.pwaPath;
+        var url = Pmobo.endpoints.baseUrl + Pmobo.endpoints.ProjectOnlineEPT + "?" + urlParams;
+        console.log("projectGetEPTs_click URL: ", url);
+        $.get(url, function (data) {
+            console.log("RETORNO DA API DO PMOBO", data);
+            dataAPI = JSON.parse(data);
+            $("#EPTsResult").append("<P> Total number of EPTs loaded FROM API: " + data.length);
+            for (var i = 0; i < dataAPI.length; i++) {
+                var Name = dataAPI[i].Name;
+                $("#EPTsResult").append("<P>EPT : " + Name);
+            }
+            alert("Get EPTs was performed.");
+        });
+    }
+
+
+    /**
+     *  ///////////////////// T R E L L O ///////////////
+     * */
+    function trelloConnector_click() {
         console.log("## Trello Connector Requested ##");
         //Trello.authorize(opts);
         window.Trello.authorize({
             type: 'popup',
             name: 'PMOBO.V2.Dev.Version - Feature Test Center',
             scope: {
-              read: 'true',
-              write: 'true' },
+                read: 'true',
+                write: 'true'
+            },
             expiration: 'never',
             success: authenticationSuccess,
             error: authenticationFailure
-          });
+        });
     }
 
-    function trelloUserToken_click()
-    {
+    function trelloUserToken_click() {
         console.log(Trello.token());
         alert(Trello.token());
         TrelloConnector.UserToken = Trello.token();
     }
 
-    function trelloGetAllBoards_click()
-    {
+    function trelloGetAllBoards_click() {
         TrelloConnector.GetAllBoards();
     }
 
 
-    function trelloGetAllBoardsUsingAPI_click()
-    {
+    function trelloGetAllBoardsUsingAPI_click() {
         var dataAPI;
         var url = "https://pmovov3.azurewebsites.net/api/Trello?token=" + Trello.token();
         console.log("trelloGetAllBoardsUsingAPI_click URL: ", url);
-        $.get(url, function( data ) {
+        $.get(url, function (data) {
             console.log("RETORNO DA API DO PMOBO", data);
             dataAPI = JSON.parse(data);
             $("#boardsResult").append("<P> Total number of boards loaded FROM API: " + data.length);
-            for(var i = 0; i < dataAPI.length; i++)
-            {
+            for (var i = 0; i < dataAPI.length; i++) {
                 var boardName = dataAPI[i].name;
                 $("#boardsResult").append("<P>Board API Name: " + boardName);
             }
-            alert( "Get Boards was performed." );
+            alert("Get Boards was performed.");
         });
     }
 
-    var authenticationSuccess = function() {
+    var authenticationSuccess = function () {
         console.log('Successful authentication');
     };
-    
-    var authenticationFailure = function() {
+
+    var authenticationFailure = function () {
         console.log('Failed authentication');
     };
 
 </script>
+
 </html>
