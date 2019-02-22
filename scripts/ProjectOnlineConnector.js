@@ -22,3 +22,26 @@ ProjectOnlineConnector.GetEPTs = function()
         alert("Get EPTs was performed.");
     });
 }
+
+
+ProjectOnlineConnector.GetProjects()
+{
+    var dataAPI;
+    var urlParams = "userName=" + Pmobo.Account.ProjectOnline.userName + "&";
+    urlParams = urlParams + "password=" + Pmobo.Account.ProjectOnline.password + "&";
+    urlParams = urlParams + "pwaPath=" + Pmobo.Account.ProjectOnline.pwaPath;
+    var url = Pmobo.endpoints.baseUrl + Pmobo.endpoints.ProjectOnlineProjects + "?" + urlParams;
+    console.log("projectGetProjects URL: ", url);
+
+    $.get(url, function (data) {
+        console.log("RETORNO DA API DO PMOBO", data);
+        //dataAPI = JSON.parse(data);
+        dataAPI = data;
+        $("#ProjectOnline_projectsResult").append("<P> Total number of Projects loaded FROM API: " + data.length);
+        for (var i = 0; i < dataAPI.length; i++) {
+            var Name = dataAPI[i].name;
+            $("#ProjectOnline_projectsResult").append("<P>ProjectName : " + Name);
+        }
+        alert("Get Projects was performed.");
+    });
+}

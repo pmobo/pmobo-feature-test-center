@@ -7,6 +7,7 @@ Pmobo.endpoints.Account.Register = "/api/Account/Register";
 Pmobo.endpoints.Account.TokenRequest = "/token";
 
 Pmobo.endpoints.ProjectOnlineEPT = "/api/ProjectOnline/EPT";
+Pmobo.endpoints.ProjectOnlineProjects = "/api/ProjectOnline/Projects";
 
 Pmobo.Account.ProjectOnline = 
 {
