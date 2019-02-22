@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="styles/style.css">
     <script src="scripts/Global.js"></script>
     <script src="scripts/TrelloConnector.js"></script>
+    <script src="scripts/ProjectOnlineConnector.js"></script>
 </head>
 
 <body>
@@ -204,7 +205,8 @@
      * Makes Ajax call to the endpoint and gets the EPTs from the current user
      **/
     function projectGetEPTs_click() {
-        var dataAPI;
+        ProjectOnlineConnector.GetEPTs();
+        /*var dataAPI;
         var urlParams = "userName=" + Pmobo.Account.ProjectOnline.userName + "&";
         urlParams = urlParams + "password=" + Pmobo.Account.ProjectOnline.password + "&";
         urlParams = urlParams + "pwaPath=" + Pmobo.Account.ProjectOnline.pwaPath;
@@ -220,6 +222,7 @@
             }
             alert("Get EPTs was performed.");
         });
+        */
     }
 
 
