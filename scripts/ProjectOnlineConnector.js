@@ -24,7 +24,7 @@ ProjectOnlineConnector.GetEPTs = function()
 }
 
 
-ProjectOnlineConnector.GetProjects()
+ProjectOnlineConnector.GetProjects = function()
 {
     var dataAPI;
     var urlParams = "userName=" + Pmobo.Account.ProjectOnline.userName + "&";
