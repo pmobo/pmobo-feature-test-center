@@ -8,7 +8,7 @@
 var TrelloConnector = {};
 TrelloConnector.APIKEY = "e7812951d8bd4b40db1bebe14574e86c";
 TrelloConnector.UserToken = "";
-
+TrelloConnector.Boards;
 
 TrelloConnector.GetAllBoards = function()
 {
@@ -16,6 +16,7 @@ TrelloConnector.GetAllBoards = function()
 
 
     $.get(url, function( data ) {
+        TrelloConnector.Boards = data;
         $("#boardsResult").append("<P> Total number of boards loaded: " + data.length);
         for(var i = 0; i < data.length; i++)
         {
