@@ -8,6 +8,7 @@ Pmobo.endpoints.Account.TokenRequest = "/token";
 
 Pmobo.endpoints.ProjectOnlineEPT = "/api/ProjectOnline/EPT";
 Pmobo.endpoints.ProjectOnlineProjects = "/api/ProjectOnline/Projects";
+Pmobo.endpoints.ProjectOnlineTasks = "/api/ProjectOnline/Tasks";
 
 Pmobo.Account.ProjectOnline = 
 {

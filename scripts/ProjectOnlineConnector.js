@@ -45,3 +45,25 @@ ProjectOnlineConnector.GetProjects = function()
         alert("Get Projects was performed.");
     });
 }
+
+ProjectOnlineConnector.GetTasks = function()
+{
+    var dataAPI;
+    var urlParams = "userName=" + Pmobo.Account.ProjectOnline.userName + "&";
+    urlParams = urlParams + "password=" + Pmobo.Account.ProjectOnline.password + "&";
+    urlParams = urlParams + "pwaPath=" + Pmobo.Account.ProjectOnline.pwaPath;
+    var url = Pmobo.endpoints.baseUrl + Pmobo.endpoints.ProjectOnlineTasks  + "?" + urlParams;
+    console.log("projectGetTasks URL: ", url);
+
+    $.get(url, function (data) {
+        console.log("RETORNO DA API DO PMOBO", data);
+        //dataAPI = JSON.parse(data);
+        dataAPI = data;
+        $("#ProjectOnline_tasksResult").append("<P> Total number of Tasks loaded FROM API: " + data.length);
+        for (var i = 0; i < dataAPI.length; i++) {
+            var Name = dataAPI[i].name;
+            $("#ProjectOnline_tasksResult").append("<P>Task : " + Name);
+        }
+        alert("Get Tasks was performed.");
+    });
+}

@@ -43,9 +43,10 @@
                 <button onclick="projectConnector_click()">Connect to Project Online</button>
                 <button onclick="projectGetEPTs_click()">Get EPTs</button>
                 <button onclick="projectGetProjects_click()">Get All Projects</button>
-                <button onclick="">Get All TASKS</button>
+                <button onclick="projectGetTasks_click()">Get All TASKS</button>
                 <div id="EPTsResult"></div>
                 <div id="ProjectOnline_projectsResult"></div>
+                <div id="ProjectOnline_tasksResult"></div>
             </div>
         </div>
     </div>
@@ -213,6 +214,11 @@
     function projectGetProjects_click()
     {
         ProjectOnlineConnector.GetProjects();
+    }
+
+    function projectGetTasks_click()
+    {
+        ProjectOnlineConnector.GetTasks();
     }
 
     /**
