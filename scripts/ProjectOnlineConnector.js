@@ -61,7 +61,7 @@ ProjectOnlineConnector.GetTasks = function()
         dataAPI = data;
         $("#ProjectOnline_tasksResult").append("<P> Total number of Tasks loaded FROM API: " + data.length);
         for (var i = 0; i < dataAPI.length; i++) {
-            var Name = dataAPI[i].name;
+            var Name = dataAPI[i].taskName;
             $("#ProjectOnline_tasksResult").append("<P>Task : " + Name);
         }
         alert("Get Tasks was performed.");
